@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rastreamento de Contêineres Docker</title>
+</head>
+<body>
+    <h1>Contêineres Docker em Execução</h1>
+    <ul>
+        {% for container in containers %}
+            <li>
+                <strong>ID:</strong> {{ container.id }}
+                <br>
+                <strong>Nome:</strong> {{ container.name }}
+                <br>
+                <form method="POST" action="/stop_container">
+                    <input type="hidden" name="container_id" value="{{ container.id }}">
+                    <button type="submit">Parar</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
